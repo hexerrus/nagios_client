@@ -1,19 +1,28 @@
 module NagiosClient
-
+    # @return [Hosts] element of Hosts class
     def self.Hosts
       return Hosts.new(@hosts)
     end
-
+  # Hosts class for convenient access to data and search
   class Hosts
-
+    # constructor
+    # @param [Array] hosts - array of Host class elements
     def initialize(hosts)
       @hosts = hosts
     end
-
+    #return all hosts
     def all
       return @hosts
     end
 
+    # find hosts, help to fine hosts by hostname, status , downtime , ack.
+    # seacrh by hostname possible by String or Regexp
+    # @param [String] :hostname example: find(:hostname => 'mailserver.com')
+    # @param [Regexp] :hostname example: find(:hostname => /^databaserole/)
+    # @param [Symbol] :status  :up or :down
+    # @param [Boolean] :downtime true - downtime enabled
+    # @param [Boolean] :ack true - acknowledgement enabled
+    # @return [Array] Array with finded hosts
     def find(conditions={})
 
       result = []

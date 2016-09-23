@@ -4,11 +4,21 @@ require "nagios_client/services"
 require "nagios_client/host"
 require "nagios_client/service"
 
-
+# module provide access to nagios web-ui throuth ruby. Nokogiri required
 module NagiosClient
 
 
   attr_accessor :host, :username, :password, :hosts
+  # Constructor method for NagiosClient
+  # @param :uri [String] url nagios server with path to cgi directory
+  # @param :username [String] username for basic auth
+  # @param :password [String] password for basic auth
+  # @example
+  #   nagios = NagiosClient.new(
+  #            :uri => "http://path/to/nagios/cgi/",
+  #            :username => 'admin',
+  #            :password => 'password' )
+  # @return [NagiosClient] self
   def self.new(args)
     @uri = args[:uri]
     @username = args[:username]
@@ -16,6 +26,8 @@ module NagiosClient
     @hosts = []
     self
   end
+
+  # get data from nagios (status.cgi?host=all&limit=0) and parse
   def self.update
     page = Nokogiri::HTML(
       open(
@@ -23,7 +35,7 @@ module NagiosClient
          :http_basic_authentication => [@username, @password]
        ),
     )
-    trs = page.css('.status > tr') 
+    trs = page.css('.status > tr')
     trs.shift # remove first element
 
     trs.each do |tr|
@@ -69,7 +81,7 @@ module NagiosClient
     end
 
   end
-
+  # return all hosts and services
   def self.all
     @hosts
   end

@@ -1,4 +1,9 @@
 module NagiosClient
+  # base host class
+  # @param [String] hostname
+  # @param [String] status
+  # @param [Boolean] downtime
+  # @param [Boolean] ack
   class Host
     attr_accessor :hostname ,:status , :services
     def initialize(args)

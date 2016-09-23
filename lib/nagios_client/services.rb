@@ -12,6 +12,7 @@ module NagiosClient
       @hosts = args if args.is_a? Array
     end
 
+    # return all services
     def all
       return prepare_services_array(@hosts)
     end
@@ -24,6 +25,16 @@ module NagiosClient
       return services
     end
 
+    # find services, help to fine cervices by hostname, service, status , downtime , ack.
+    # seacrh by hostname and service possible by String or Regexp
+    # @param [String] :hostname example: find(:hostname => 'mailserver.com')
+    # @param [Regexp] :hostname example: find(:hostname => /^databaserole/)
+    # @param [String] :service
+    # @param [Regexp] :service
+    # @param [Symbol] :status  :OK, :WARNING, :CRITICAL, :UNKNOWN
+    # @param [Boolean] :downtime true - downtime enabled
+    # @param [Boolean] :ack true - acknowledgement enabled
+    # @return [Array] Array with finded services
     def find(conditions={})
       services = []
 

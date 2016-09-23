@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = NagiosClient::VERSION
   spec.authors       = ["Pavel Svirsky"]
   spec.email         = ["hexer.rus@gmail.com"]
-
+  spec.license       = "MIT"
   spec.summary       = %q{Nagios clent for ruby}
   spec.description   = %q{Ruby cleint for Nagios based on Nokogiri}
   spec.homepage      = "http://example.com"
@@ -33,4 +33,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "redcarpet", "~> 1.17"
+  spec.add_development_dependency "yard", "~> 0.7.5"
 end
