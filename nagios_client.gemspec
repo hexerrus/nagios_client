@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.summary       = %q{Nagios clent for ruby}
   spec.description   = %q{Ruby cleint for Nagios based on Nokogiri}
-  spec.homepage      = "http://example.com"
+  spec.homepage      = "https://github.com/hexerrus/nagios_client"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

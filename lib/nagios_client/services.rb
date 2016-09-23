@@ -6,8 +6,10 @@ module NagiosClient
 
   class Services
 
+    # constructor for NagiosClient::Services
+    # get by arguments one element of NagiosClient::Host class or Array filled of NagiosClient::Host class elems.
+    # @param args
     def initialize(args)
-
       @hosts = [args] if args.is_a? NagiosClient::Host
       @hosts = args if args.is_a? Array
     end

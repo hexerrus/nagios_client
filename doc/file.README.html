@@ -56,34 +56,70 @@
     
     <div id="content"><div id='filecontents'><h1>NagiosClient</h1>
 
-<p>Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file <code>lib/nagios_client</code>. To experiment with that code, run <code>bin/console</code> for an interactive prompt.</p>
-
-<p>TODO: Delete this and the text above, and describe your gem</p>
+<p>Simple ruby gem for getting data from Nagios through web interface using nokogiri</p>
 
 <h2>Installation</h2>
 
 <p>Add this line to your application's Gemfile:</p>
 
-<pre class="code ruby"><code><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nagios_client</span><span class='tstring_end'>&#39;</span></span>
+<pre class="code ruby"><code><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nagios_client</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:git</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://github.com/hexerrus/nagios_client.git</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
 <p>And then execute:</p>
 
-<pre class="code ruby"><code></code></pre>
-
-<p>Or install it yourself as:</p>
-
-<pre class="code ruby"><code></code></pre>
+<pre class="code ruby"><code> <span class='backtick'>`</span><span class='tstring_content'>bundle</span><span class='tstring_end'>`</span></span>
+</code></pre>
 
 <h2>Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<h3>Get all data</h3>
 
-<h2>Development</h2>
+<pre class="code ruby"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nagios_client</span><span class='tstring_end'>&#39;</span></span>
 
-<p>After checking out the repo, run <code>bin/setup</code> to install dependencies. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
 
-<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+<span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>NagiosClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+      <span class='symbol'>:uri</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://nagioscore.demos.nagios.com/nagios/cgi-bin/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='symbol'>:username</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nagiosadmin</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+      <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nagiosadmin</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span> <span class='comment'># download and parse all data from nagios
+</span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Hosts</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span> <span class='comment'># return all data
+</span></code></pre>
+
+<h3>find hosts</h3>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_hosts'>hosts</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Hosts</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='symbol'>:hostname</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mailserver</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:status</span> <span class='op'>=&gt;</span> <span class='symbol'>:up</span><span class='rparen'>)</span> <span class='comment'># will return Array of hosts
+</span><span class='comment'># also you can use :downtime =&gt; true || false
+</span><span class='comment'># and :ack =&gt; true || false
+</span></code></pre>
+
+<p>or with Regexp</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_hosts'>hosts</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Hosts</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='symbol'>:hostname</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^mailserver$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:status</span> <span class='op'>=&gt;</span> <span class='symbol'>:up</span><span class='rparen'>)</span>
+</code></pre>
+
+<h3>find services</h3>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_services'>services</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Services</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='symbol'>:hostname</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mailserver</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:service</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>postfix_queue</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:status</span> <span class='op'>=&gt;</span> <span class='symbol'>:CRITICAL</span><span class='rparen'>)</span>
+<span class='comment'># also you can use :downtime =&gt; true || false
+</span><span class='comment'># and :ack =&gt; true || false
+</span></code></pre>
+
+<h3>More examples</h3>
+
+<p>get services by host
+<code>ruby
+client.Hosts.find(:hostname =&gt; 'mailserver').first.Services.all
+</code></p>
+
+<p>get hostname by service
+<code>ruby
+client.Services.find(:service =&gt; /postfix_queue/, :status =&gt; :CRITICAL).first.Host.hostname
+</code></p>
+
+<p>or array of hosts
+<code>ruby
+client.Services.find(:service =&gt; /postfix_queue/, :status =&gt; :CRITICAL).map{|service| service.Host.hostname }
+</code></p>
 
 <h2>Contributing</h2>
 
@@ -91,7 +127,7 @@
 </div></div>
     
     <div id="footer">
-  Generated on Fri Sep 23 16:33:16 2016 by 
+  Generated on Fri Sep 23 17:04:55 2016 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-2.3.0).
 </div>
