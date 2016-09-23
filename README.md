@@ -50,19 +50,18 @@ services = client.Services.find(:hostname => 'mailserver', :service => /postfix_
 # and :ack => true || false
 ```
 
-### More examples
-
+### get services by host
 get services by host
 ```ruby
 client.Hosts.find(:hostname => 'mailserver').first.Services.all
 ```
 
-get hostname by service
+### hostname by service
 ```ruby
 client.Services.find(:service => /postfix_queue/, :status => :CRITICAL).first.Host.hostname
 ```
 
-or array of hosts
+### array of hosts
 ```ruby
 client.Services.find(:service => /postfix_queue/, :status => :CRITICAL).map{|service| service.Host.hostname }
 ```

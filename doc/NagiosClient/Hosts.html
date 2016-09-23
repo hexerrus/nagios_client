@@ -436,7 +436,11 @@ seacrh by hostname possible by String or Regexp</p>
 44
 45
 46
-47</pre>
+47
+48
+49
+50
+51</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 26</span>
@@ -447,6 +451,8 @@ seacrh by hostname possible by String or Regexp</p>
 
   <span class='id identifier rubyid_hostname_condition'>hostname_condition</span> <span class='op'>=</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='lbracket'>[</span><span class='symbol'>:hostname</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_status_condition'>status_condition</span> <span class='op'>=</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='lbracket'>[</span><span class='symbol'>:status</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_downtime_condition'>downtime_condition</span> <span class='op'>=</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='lbracket'>[</span><span class='symbol'>:downtime</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_ack_condition'>ack_condition</span> <span class='op'>=</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='lbracket'>[</span><span class='symbol'>:ack</span><span class='rbracket'>]</span>
 
   <span class='ivar'>@hosts</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_host'>host</span><span class='op'>|</span>
     <span class='kw'>unless</span> <span class='id identifier rubyid_hostname_condition'>hostname_condition</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -458,7 +464,9 @@ seacrh by hostname possible by String or Regexp</p>
       <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_status_condition'>status_condition</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>!=</span> <span class='id identifier rubyid_status_condition'>status_condition</span>
       <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_status_condition'>status_condition</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>String</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>!=</span> <span class='id identifier rubyid_status_condition'>status_condition</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
     <span class='kw'>end</span>
-
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_downtime_condition'>downtime_condition</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_downtime'>downtime</span> <span class='op'>!=</span> <span class='id identifier rubyid_downtime_condition'>downtime_condition</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_ack_condition'>ack_condition</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_ack'>ack</span> <span class='op'>!=</span> <span class='id identifier rubyid_ack_condition'>ack_condition</span>
+    
     <span class='id identifier rubyid_result'>result</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_host'>host</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span>
@@ -473,7 +481,7 @@ seacrh by hostname possible by String or Regexp</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 23 17:08:00 2016 by 
+  Generated on Fri Sep 23 17:20:59 2016 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-2.3.0).
 </div>

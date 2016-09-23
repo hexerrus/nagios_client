@@ -29,6 +29,8 @@ module NagiosClient
 
       hostname_condition = conditions[:hostname]
       status_condition = conditions[:status]
+      downtime_condition = conditions[:downtime]
+      ack_condition = conditions[:ack]
 
       @hosts.each do |host|
         unless hostname_condition.nil?
@@ -40,7 +42,9 @@ module NagiosClient
           next if status_condition.is_a? Symbol and host.status != status_condition
           next if status_condition.is_a? String and host.status != status_condition.to_sym
         end
-
+        next if !downtime_condition.nil? and host.downtime != downtime_condition
+        next if !ack_condition.nil? and host.ack != ack_condition
+        
         result << host
       end
       result

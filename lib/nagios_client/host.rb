@@ -5,7 +5,7 @@ module NagiosClient
   # @param [Boolean] downtime
   # @param [Boolean] ack
   class Host
-    attr_accessor :hostname ,:status , :services
+    attr_accessor :hostname ,:status , :services, :downtime , :ack
     def initialize(args)
       @hostname = args[:hostname]
       @status = args[:status]

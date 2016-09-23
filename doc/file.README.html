@@ -106,22 +106,22 @@
 </span><span class='comment'># and :ack =&gt; true || false
 </span></code></pre>
 
-<h3>More examples</h3>
+<h3>get services by host</h3>
 
 <p>get services by host
 <code>ruby
 client.Hosts.find(:hostname =&gt; 'mailserver').first.Services.all
 </code></p>
 
-<p>get hostname by service
-<code>ruby
-client.Services.find(:service =&gt; /postfix_queue/, :status =&gt; :CRITICAL).first.Host.hostname
-</code></p>
+<h3>hostname by service</h3>
 
-<p>or array of hosts
-<code>ruby
-client.Services.find(:service =&gt; /postfix_queue/, :status =&gt; :CRITICAL).map{|service| service.Host.hostname }
-</code></p>
+<pre class="code ruby"><code><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Services</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='symbol'>:service</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>postfix_queue</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:status</span> <span class='op'>=&gt;</span> <span class='symbol'>:CRITICAL</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='const'>Host</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span>
+</code></pre>
+
+<h3>array of hosts</h3>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='const'>Services</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='symbol'>:service</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>postfix_queue</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:status</span> <span class='op'>=&gt;</span> <span class='symbol'>:CRITICAL</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_service'>service</span><span class='op'>|</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='const'>Host</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span> <span class='rbrace'>}</span>
+</code></pre>
 
 <h2>Contributing</h2>
 
@@ -129,7 +129,7 @@ client.Services.find(:service =&gt; /postfix_queue/, :status =&gt; :CRITICAL).ma
 </div></div>
     
     <div id="footer">
-  Generated on Fri Sep 23 17:08:00 2016 by 
+  Generated on Fri Sep 23 17:20:59 2016 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-2.3.0).
 </div>
