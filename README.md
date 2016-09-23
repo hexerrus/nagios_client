@@ -2,6 +2,8 @@
 
 Simple ruby gem for getting data from Nagios through web interface using nokogiri
 
+[Documentation](https://hexerrus.github.io/nagios_client/doc/)
+
 ## Installation
 
 Add this line to your application's Gemfile:
