@@ -235,12 +235,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hosts'>hosts</span><span class='rparen'>)</span>
   <span class='ivar'>@hosts</span> <span class='op'>=</span> <span class='id identifier rubyid_hosts'>hosts</span>
@@ -280,12 +280,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_all'>all</span>
   <span class='kw'>return</span> <span class='ivar'>@hosts</span>
@@ -415,8 +415,6 @@ seacrh by hostname possible by String or Regexp</p>
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
@@ -440,10 +438,12 @@ seacrh by hostname possible by String or Regexp</p>
 48
 49
 50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/hosts.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
@@ -466,7 +466,7 @@ seacrh by hostname possible by String or Regexp</p>
     <span class='kw'>end</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_downtime_condition'>downtime_condition</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_downtime'>downtime</span> <span class='op'>!=</span> <span class='id identifier rubyid_downtime_condition'>downtime_condition</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_ack_condition'>ack_condition</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='kw'>and</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_ack'>ack</span> <span class='op'>!=</span> <span class='id identifier rubyid_ack_condition'>ack_condition</span>
-    
+
     <span class='id identifier rubyid_result'>result</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_host'>host</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_result'>result</span>
@@ -481,7 +481,7 @@ seacrh by hostname possible by String or Regexp</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 23 17:20:59 2016 by 
+  Generated on Thu Oct  6 15:41:49 2016 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-2.3.0).
 </div>

@@ -1,7 +1,9 @@
 module NagiosClient
     # @return [Hosts] element of Hosts class
-    def self.Hosts
-      return Hosts.new(@hosts)
+    class Client
+      def Hosts
+        return Hosts.new(@hosts)
+      end
     end
   # Hosts class for convenient access to data and search
   class Hosts
@@ -44,7 +46,7 @@ module NagiosClient
         end
         next if !downtime_condition.nil? and host.downtime != downtime_condition
         next if !ack_condition.nil? and host.ack != ack_condition
-        
+
         result << host
       end
       result

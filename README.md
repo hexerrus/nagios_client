@@ -51,7 +51,6 @@ services = client.Services.find(:hostname => 'mailserver', :service => /postfix_
 ```
 
 ### get services by host
-get services by host
 ```ruby
 client.Hosts.find(:hostname => 'mailserver').first.Services.all
 ```

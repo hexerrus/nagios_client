@@ -242,13 +242,13 @@ get by arguments one element of NagiosClient::Host class or Array filled of Nagi
       <pre class="lines">
 
 
-12
 13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='ivar'>@hosts</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_args'>args</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>NagiosClient</span><span class='op'>::</span><span class='const'>Host</span>
@@ -289,12 +289,12 @@ get by arguments one element of NagiosClient::Host class or Array filled of Nagi
       <pre class="lines">
 
 
-18
 19
-20</pre>
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_all'>all</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_prepare_services_array'>prepare_services_array</span><span class='lparen'>(</span><span class='ivar'>@hosts</span><span class='rparen'>)</span>
@@ -446,7 +446,6 @@ seacrh by hostname and service possible by String or Regexp</p>
       <pre class="lines">
 
 
-40
 41
 42
 43
@@ -485,10 +484,11 @@ seacrh by hostname and service possible by String or Regexp</p>
 76
 77
 78
-79</pre>
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_conditions'>conditions</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_services'>services</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -548,16 +548,16 @@ seacrh by hostname and service possible by String or Regexp</p>
       <pre class="lines">
 
 
-22
 23
 24
 25
 26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/nagios_client/services.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prepare_services_array'>prepare_services_array</span><span class='lparen'>(</span><span class='id identifier rubyid_hosts'>hosts</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_services'>services</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -576,7 +576,7 @@ seacrh by hostname and service possible by String or Regexp</p>
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 23 17:20:59 2016 by 
+  Generated on Thu Oct  6 15:41:49 2016 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.5 (ruby-2.3.0).
 </div>

@@ -1,8 +1,9 @@
 module NagiosClient
-
-    def self.Services
+  class Client
+    def Services
       return Services.new(@hosts)
     end
+  end
 
   class Services
 
